@@ -43,3 +43,15 @@ nfa_engine.visualize()
 
 dfa_engine = DFA(nfa_regex)
 dfa_engine.visualize()
+
+
+import re
+
+def grep(pattern, filename):
+    with open(filename, 'r') as file:
+        for line_number, line in enumerate(file, start=1):
+            if re.search(pattern, line):
+                print(f"{filename}:{line_number}:{line.strip()}")
+
+# Example usage:
+grep("regex", "sample.txt")
